@@ -19,7 +19,8 @@ app.get('/orders', (c) => {
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     filteredOrders = mockOrders.filter(o => 
-      o.id.toLowerCase().includes(q)
+      o.id.toLowerCase().includes(q) ||
+      o.items.some(item => item.toLowerCase().includes(q))
     );
   }
 
@@ -60,8 +61,11 @@ app.get('/orders/:id', (c) => {
 });
 
 app.get('/xhr_order_status/:id', (c) => {
-  const id = c.req.param('id');
-  const order = mockOrders.find(o => o.id === id);
+  const query = c.req.param('id').toLowerCase();
+  const order = mockOrders.find(o => 
+    o.id.toLowerCase() === query || 
+    o.items.some(item => item.toLowerCase().includes(query))
+  );
   
   if (!order) {
     return c.json({ error: 'Order not found' }, 404);
@@ -71,12 +75,15 @@ app.get('/xhr_order_status/:id', (c) => {
 });
 
 app.get('/xhr_order_status', (c) => {
-  const id = c.req.query('orderId') || c.req.query('id');
-  if (!id) {
+  const query = (c.req.query('orderId') || c.req.query('id') || '').toLowerCase();
+  if (!query) {
     return c.json({ error: 'Missing order ID' }, 400);
   }
   
-  const order = mockOrders.find(o => o.id === id);
+  const order = mockOrders.find(o => 
+    o.id.toLowerCase() === query || 
+    o.items.some(item => item.toLowerCase().includes(query))
+  );
   if (!order) {
     return c.json({ error: 'Order not found' }, 404);
   }

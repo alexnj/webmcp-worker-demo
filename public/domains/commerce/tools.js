@@ -22,13 +22,11 @@ export const commerceTools = [
 
       // Try fetching the exact order via XHR first
       let orderData = null;
-      if (args.query && args.query.startsWith("ORD")) {
+      if (args.query) {
         try {
           const res = await fetch(`/xhr_order_status/${args.query}`);
           if (res.ok) {
             orderData = await res.json();
-          } else {
-            return {status: 'error, order id does not exist in the system.'};
           }
         } catch (e) {
           console.error('XHR lookup failed', e);
