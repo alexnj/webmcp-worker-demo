@@ -28,6 +28,14 @@ export const Layout: FC = (props) => {
           <a href="/cart">View cart</a>
         </nav>
         <main>{props.children}</main>
+        <script type="module" dangerouslySetInnerHTML={{
+          __html: `
+            import { initWebMCP } from '/client/webmcp-client.js';
+            initWebMCP('/sw/webmcp-sw.js', ['order_lookup']).then(() => {
+              console.log('WebMCP Bridge initialized!');
+            });
+          `
+        }} />
       </body>
     </html>
   );

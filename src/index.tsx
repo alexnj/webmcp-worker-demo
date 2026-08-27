@@ -59,6 +59,31 @@ app.get('/orders/:id', (c) => {
   return c.html(<OrderDetails order={order} />);
 });
 
+app.get('/xhr_order_status/:id', (c) => {
+  const id = c.req.param('id');
+  const order = mockOrders.find(o => o.id === id);
+  
+  if (!order) {
+    return c.json({ error: 'Order not found' }, 404);
+  }
+
+  return c.json(order);
+});
+
+app.get('/xhr_order_status', (c) => {
+  const id = c.req.query('orderId') || c.req.query('id');
+  if (!id) {
+    return c.json({ error: 'Missing order ID' }, 400);
+  }
+  
+  const order = mockOrders.find(o => o.id === id);
+  if (!order) {
+    return c.json({ error: 'Order not found' }, 404);
+  }
+
+  return c.json(order);
+});
+
 app.get('/cart', (c) => {
   return c.html(
     <Layout>

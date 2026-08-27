@@ -8,7 +8,7 @@ export const Home: FC = () => {
       <h1>Welcome to WebMCP Store</h1>
       <p>This example site features a WebMCP enabled commerce store that is written as a Multi-Page Application (MPA)</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
-        {products.map(product => (
+        {products.slice(0,6).map(product => (
           <div class="card">
             <h3>{product.name}</h3>
             <p>${product.price.toFixed(2)}</p>

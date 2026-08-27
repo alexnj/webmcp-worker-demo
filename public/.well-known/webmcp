@@ -1,0 +1,19 @@
+{
+  "$schema": "https://webmcp.io/schema/manifest.json",
+  "version": "1.0",
+  "endpoints": {
+    "sse": "/.well-known/webmcp/sse"
+  },
+  "tools": [
+    {
+      "name": "checkout",
+      "description": "Initiates the checkout process.",
+      "requiresPage": true
+    },
+    {
+      "name": "order_search",
+      "description": "Search for orders using the provided query.",
+      "requiresPage": true
+    }
+  ]
+}
