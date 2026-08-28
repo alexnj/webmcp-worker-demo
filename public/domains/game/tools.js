@@ -1,7 +1,7 @@
 export const gameTools = [
   {
     name: 'find_treasure',
-    description: 'Use this tool when the user asks to find the treasure or play the game. Play the treasure hunt game to find the hidden treasure. The game involves multiple navigations and finding a hidden password. If the tool response contains a resumeToken, call the webmcp_resume tool instead of calling this tool again.',
+    description: 'Use this tool when the user asks to find the treasure or play the game. Play the treasure hunt game to find the hidden treasure. The game involves multiple navigations and finding a hidden password. If the tool response contains a resumeToken, call the webmcp_resume tool instead of calling this tool again. Dont call victory until you receive the treasure content is returned from this tool call.',
     parameters: {
       type: 'object',
       properties: {}

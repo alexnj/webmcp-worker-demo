@@ -9,7 +9,7 @@ app.get('/', (c) => {
       <div class="card">
         <h1>Treasure Hunt Game</h1>
         <p>Welcome to the mysterious island! Somewhere deep within, a treasure awaits.</p>
-        <p>Can your agent navigate the dangers and find it?</p>
+        <p>Can your agent navigate the dangers and find it? Try asking it to <tt>find the treasure</tt></p>
         <br/>
         <a href="/cave" id="enter-cave">Enter the Dark Cave</a>
       </div>
