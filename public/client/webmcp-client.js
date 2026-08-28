@@ -175,7 +175,11 @@ async function handleDOMAction(event) {
         result = await fn(...payload.args);
         break;
       case 'navigate':
-        window.location.href = payload.url;
+        // Delay navigation to give SW time to send the yield token response 
+        // back to the agent before the page unloads.
+        setTimeout(() => {
+          window.location.href = payload.url;
+        }, 100);
         break;
       default:
         throw new Error(`Unknown action: ${action}`);
