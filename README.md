@@ -1,8 +1,8 @@
 # WebMCP Worker Example: Treasure Hunt Game
 
-This project demonstrates the powerful "yielding" mechanism of WebMCP, which allows AI agents to interact with Multi-Page Applications (MPAs) seamlessly across full page navigations.
+This project demonstrates the concept of "yielding" in WebMCP, which allows AI agents to interact with Multi-Page Applications (MPAs) seamlessly across full page navigations.
 
-To showcase this, the site features a simple **Treasure Hunt Game**.
+To showcase this, the site features a simple **Treasure Hunt Game**. Your agent can play a deployed version at https://webmcp-sw-demo.abclient.workers.dev/
 
 ## The Game
 
@@ -19,7 +19,7 @@ This project provides the `find_treasure` tool to the WebMCP agent. When the use
 
 ## What's Happening Behind the Scenes?
 
-In a standard web environment, running an automated script that navigates the browser is difficult because the script's execution context is destroyed as soon as the page unloads.
+In a standard web page environment, running an automated script that navigates the browser is difficult because the script's execution context is destroyed as soon as the page unloads.
 
 **This WebMCP demo solves this using a Service Worker and a Yielding Mechanism.**
 
